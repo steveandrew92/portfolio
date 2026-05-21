@@ -1,0 +1,34 @@
+# -----------------------------------------------------------------------------
+# Salin isi file ini ke: public_html/portfolio/.htaccess
+# (satu tingkat dengan folder app/, vendor/, public/ — BUKAN hanya di dalam public/)
+#
+# - Rule front controller: semua route Laravel (/, /up, dll.)
+# - Untuk akses dari ROOT domain (steventandrean.id), pasang juga
+#   deployment/hostinger-public_html-root.htaccess di public_html/.htaccess
+# -----------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Opsional — hanya jika app di subpath /portfolio dan URL masih 404:
+    # RewriteBase /portfolio/
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ public/index.php [L,QSA]
+</IfModule>

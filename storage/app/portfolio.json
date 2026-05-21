@@ -1,0 +1,194 @@
+{
+  "profile": {
+    "name": "Stevent Andrean",
+    "headline": "System Analyst · Software Developer · Design Editor",
+    "tagline": "Membangun sistem yang terstruktur, kode yang performan, dan pengalaman visual yang elegan.",
+    "email": "stevent.andrean@gmail.com",
+    "location": "Indonesia",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/steventandrean",
+      "github": "https://github.com/steventandrean",
+      "behance": "https://www.behance.net/"
+    }
+  },
+  "theme": {
+    "roles": {
+      "system_analyst": {
+        "accent": "#22d3ee",
+        "accent_soft": "rgba(34, 211, 238, 0.12)",
+        "label": "System Analyst"
+      },
+      "software_developer": {
+        "accent": "#34d399",
+        "accent_soft": "rgba(52, 211, 153, 0.12)",
+        "label": "Software Developer"
+      },
+      "design_editor": {
+        "accent": "#a78bfa",
+        "accent_soft": "rgba(167, 139, 250, 0.12)",
+        "label": "Design Editor"
+      }
+    }
+  },
+  "roles": {
+    "system_analyst": {
+      "slug": "system-analyst",
+      "title": "System Analyst",
+      "tagline": "Blueprint bisnis yang terukur, alur data yang jelas.",
+      "description": "Saya merancang kebutuhan sistem dari perspektif proses bisnis: diagram alur, spesifikasi fungsional, integrasi antar modul, dan dokumentasi yang siap diimplementasikan tim engineering. Fokus pada kejelasan, traceability, dan mitigasi risiko sejak fase discovery.",
+      "highlights": [
+        "Business process mapping & BPMN",
+        "Functional specification & user stories",
+        "API / data flow documentation",
+        "UAT planning & acceptance criteria"
+      ],
+      "catalog": [
+        {
+          "id": "sa-erp-inventory",
+          "title": "ERP Inventory Module Redesign",
+          "short_description": "Analisis alur stok multi-gudang, reservasi batch FIFO, dan integrasi laporan operasional.",
+          "tech_stack": ["BPMN", "MySQL", "Laravel", "Draw.io"],
+          "year": "2025",
+          "case_study": {
+            "overview": "Modul inventory untuk UMKM skincare membutuhkan ketelusuran batch dan sinkronisasi dengan produksi. Saya memetakan seluruh lifecycle dari raw material hingga finished goods.",
+            "challenges": "Proses manual di spreadsheet menyebabkan selisih stok dan sulit audit batch.",
+            "outcomes": "Spesifikasi 40+ user story, diagram alur reservasi, dan kriteria UAT yang mengurangi selisih stok hingga terukur per batch.",
+            "link": null
+          }
+        },
+        {
+          "id": "sa-payment-gateway",
+          "title": "Payment Gateway Integration Spec",
+          "short_description": "Dokumentasi webhook invoice, status order, dan skenario kegagalan pembayaran.",
+          "tech_stack": ["Sequence Diagram", "REST API", "Xendit", "Postman"],
+          "year": "2024",
+          "case_study": {
+            "overview": "Integrasi pembayaran untuk e-commerce dengan status real-time dan notifikasi email.",
+            "challenges": "Race condition antara callback webhook dan halaman sukses pengguna.",
+            "outcomes": "State machine pembayaran, matriks error handling, dan checklist QA otomatis.",
+            "link": null
+          }
+        },
+        {
+          "id": "sa-crm-leads",
+          "title": "CRM Lead Pipeline Analysis",
+          "short_description": "Segmentasi lead, SLA follow-up, dan dashboard KPI untuk tim sales.",
+          "tech_stack": ["User Flow", "Figma", "SQL Reports"],
+          "year": "2024",
+          "case_study": {
+            "overview": "Pipeline CRM dari form landing page hingga konversi deal untuk layanan B2B.",
+            "challenges": "Data lead tersebar di WhatsApp dan spreadsheet tanpa prioritas.",
+            "outcomes": "Model data lead + aktivitas, definisi stage, dan 12 metrik KPI operasional.",
+            "link": null
+          }
+        }
+      ]
+    },
+    "software_developer": {
+      "slug": "software-developer",
+      "title": "Software Developer",
+      "tagline": "Kode bersih, arsitektur scalable, pengalaman pengguna yang cepat.",
+      "description": "Saya mengembangkan aplikasi web full-stack dengan Laravel, API yang konsisten, dan front-end yang ringan. Prioritas: performa, maintainability, dan deploy yang mudah di shared hosting maupun VPS.",
+      "highlights": [
+        "Laravel & PHP 8.x",
+        "REST API & integrasi pihak ketiga",
+        "Tailwind CSS & Vite",
+        "Deploy Hostinger / Git workflow"
+      ],
+      "catalog": [
+        {
+          "id": "dev-blizanac",
+          "title": "Blizanac Skincare Platform",
+          "short_description": "E-commerce + operasional produksi dengan inventory batch FIFO dan checkout terintegrasi.",
+          "tech_stack": ["Laravel 11", "MySQL", "Tailwind", "Vite", "Xendit"],
+          "year": "2025",
+          "case_study": {
+            "overview": "Platform end-to-end untuk brand skincare: katalog, skin match quiz, reseller portal, dan dashboard produksi.",
+            "challenges": "Deploy di subpath Hostinger, asset Vite, dan performa tanpa over-engineering.",
+            "outcomes": "Arsitektur modular, middleware path prefix, pipeline deploy Git + SSH terdokumentasi.",
+            "link": "https://steventandrean.id/blizanac"
+          }
+        },
+        {
+          "id": "dev-portfolio",
+          "title": "Premium Portfolio (JSON-driven)",
+          "short_description": "Single-page portfolio tanpa database, konfigurasi master data via portfolio.json.",
+          "tech_stack": ["Laravel", "GSAP", "ScrollTrigger", "Tailwind CSS 4"],
+          "year": "2026",
+          "case_study": {
+            "overview": "Website personal brand dengan theme swapping per role dan animasi scroll yang halus.",
+            "challenges": "Keseimbangan antara estetika premium dan waktu load di shared hosting.",
+            "outcomes": "Zero DB dependency, file-based content, dan build asset production-ready.",
+            "link": null
+          }
+        },
+        {
+          "id": "dev-api-dashboard",
+          "title": "Operational API Dashboard",
+          "short_description": "Panel internal untuk monitoring order, stok, dan webhook logs.",
+          "tech_stack": ["Laravel", "Sanctum", "Chart.js", "Redis"],
+          "year": "2024",
+          "case_study": {
+            "overview": "Dashboard real-time untuk tim operasional dengan filter tanggal dan export CSV.",
+            "challenges": "Query berat pada tabel transaksi bulanan.",
+            "outcomes": "Indexing strategis, caching ringan, dan response time di bawah 300ms untuk view utama.",
+            "link": null
+          }
+        }
+      ]
+    },
+    "design_editor": {
+      "slug": "design-editor",
+      "title": "Design Editor",
+      "tagline": "Visual yang disiplin, tipografi tajam, dan storytelling yang tenang.",
+      "description": "Saya menyunting dan merancang aset visual untuk brand digital: layout editorial, sistem warna, komponen UI, dan mockup yang siap handoff ke development. Neo-minimal, tanpa gimmick berlebihan.",
+      "highlights": [
+        "UI kit & design tokens",
+        "Editorial layout & typography",
+        "Brand guideline light/dark",
+        "Figma → development handoff"
+      ],
+      "catalog": [
+        {
+          "id": "de-skincare-brand",
+          "title": "Skincare Brand Visual System",
+          "short_description": "Paleta sage & cream, komponen kartu produk, dan hierarki tipografi untuk e-commerce.",
+          "tech_stack": ["Figma", "Auto Layout", "Variables"],
+          "year": "2025",
+          "case_study": {
+            "overview": "Sistem visual untuk Blizanac: konsisten di landing, katalog, dan email transaksional.",
+            "challenges": "Menjaga kesan premium dengan budget produksi foto terbatas.",
+            "outcomes": "8 komponen inti, grid responsif, dan dokumentasi spacing 4px base.",
+            "link": null
+          }
+        },
+        {
+          "id": "de-portfolio-ui",
+          "title": "Portfolio UI — Role-based Themes",
+          "short_description": "Tiga aksen warna per peran dengan transisi halus dan monogram geometris SA.",
+          "tech_stack": ["Figma", "CSS Variables", "Tailwind"],
+          "year": "2026",
+          "case_study": {
+            "overview": "Desain antarmuka portfolio dengan kartu role besar dan katalog proyek horizontal.",
+            "challenges": "Theme swap global tanpa reload halaman.",
+            "outcomes": "Token warna per role, komponen kartu reusable, dan reduced-motion fallback.",
+            "link": null
+          }
+        },
+        {
+          "id": "de-editorial-landing",
+          "title": "Editorial Landing Page",
+          "short_description": "Hero asymmetrical, parallax halus, dan CTA magnetic untuk layanan freelance.",
+          "tech_stack": ["Figma", "GSAP mock", "Responsive"],
+          "year": "2024",
+          "case_study": {
+            "overview": "Landing page untuk konsultan independen dengan fokus whitespace dan fotografi produk.",
+            "challenges": "Konversi rendah karena hierarki informasi berantakan.",
+            "outcomes": "Wireframe → high-fidelity, peningkatan clarity CTA dan skor readability.",
+            "link": null
+          }
+        }
+      ]
+    }
+  }
+}

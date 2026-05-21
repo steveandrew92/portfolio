@@ -1,0 +1,5 @@
+*
+!private/
+!public/
+!portfolio.json
+!.gitignore

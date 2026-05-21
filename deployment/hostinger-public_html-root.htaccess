@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# Salin isi file ini ke: public_html/.htaccess (ROOT domain steventandrean.id)
+#
+# Tujuan:
+# - https://steventandrean.id/  → aplikasi Portfolio (folder public_html/portfolio)
+# - https://steventandrean.id/blizanac/... → tetap ke app Blizanac (jika ada)
+#
+# Sesuaikan nama folder "portfolio" dan "blizanac" jika di server berbeda.
+# Backup .htaccess lama sebelum menimpa.
+# -----------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # --- Blizanac (subpath) — jangan hapus jika masih dipakai ---
+    RewriteRule ^blizanac/storage/(.*)$ blizanac/public/storage/$1 [L]
+    RewriteCond %{REQUEST_URI} ^/blizanac
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^blizanac/?(.*)$ blizanac/public/index.php [L,QSA]
+
+    # --- File/folder statis di root public_html (jika ada) ---
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- Portfolio sebagai homepage domain ---
+    RewriteRule ^(.*)$ portfolio/public/index.php [L,QSA]
+</IfModule>

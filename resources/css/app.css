@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-surface: var(--sa-surface);
+    --color-elevated: var(--sa-elevated);
+    --color-ink: var(--sa-ink);
+    --color-muted: var(--sa-muted);
+    --color-line: var(--sa-line);
+    --color-accent: var(--sa-accent);
+}
+
+/* Role accents — overridden by JS */
+:root {
+    --sa-surface: #f8fafc;
+    --sa-elevated: #ffffff;
+    --sa-ink: #0f172a;
+    --sa-muted: #64748b;
+    --sa-line: #e2e8f0;
+    --sa-accent: #0891b2;
+    --sa-accent-soft: rgba(8, 145, 178, 0.1);
+    --sa-navy: #0a192f;
+}
+
+html[data-theme='dark'] {
+    --sa-surface: #0a192f;
+    --sa-elevated: #112240;
+    --sa-ink: #e6f1ff;
+    --sa-muted: #8892b0;
+    --sa-line: #233554;
+}
+
+html[data-role='system_analyst'] {
+    --sa-accent: #22d3ee;
+    --sa-accent-soft: rgba(34, 211, 238, 0.12);
+}
+
+html[data-role='software_developer'] {
+    --sa-accent: #34d399;
+    --sa-accent-soft: rgba(52, 211, 153, 0.12);
+}
+
+html[data-role='design_editor'] {
+    --sa-accent: #a78bfa;
+    --sa-accent-soft: rgba(167, 139, 250, 0.12);
+}
+
+#bg-grid {
+    background-image:
+        linear-gradient(var(--sa-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--sa-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+}
+
+#bg-glow-a,
+#bg-glow-b,
+#parallax-orb,
+.role-card-glow {
+    background-color: var(--sa-accent);
+}
+
+.text-accent {
+    color: var(--sa-accent);
+}
+
+.bg-accent {
+    background-color: var(--sa-accent);
+}
+
+.border-accent {
+    border-color: var(--sa-accent);
+}
+
+.btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-[#0a192f] shadow-sm transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98];
+}
+
+html[data-theme='light'] .btn-primary {
+    @apply text-white;
+}
+
+.btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-line bg-elevated/50 px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-accent/40 hover:text-accent;
+}
+
+.role-panel.is-open {
+    display: block;
+    animation: panel-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-card.is-active {
+    @apply border-accent/50 shadow-lg;
+}
+
+.role-card.is-active .role-card-glow {
+    opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .role-panel.is-open {
+        animation: none;
+    }
+
+    .reveal,
+    .reveal-panel {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
