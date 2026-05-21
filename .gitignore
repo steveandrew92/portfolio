@@ -14,7 +14,8 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+# public/build DI-COMMIT untuk deploy Hostinger (server tidak jalankan npm).
+# Setelah ubah CSS/JS: npm run build → git add public/build → push
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
