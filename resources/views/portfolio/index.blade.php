@@ -16,39 +16,52 @@
         <div id="bg-grid" class="absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"></div>
         <div id="bg-glow-a" class="absolute -left-1/4 top-0 h-[55vh] w-[55vw] rounded-full blur-[120px] transition-colors duration-700"></div>
         <div id="bg-glow-b" class="absolute -right-1/4 bottom-0 h-[45vh] w-[50vw] rounded-full blur-[100px] transition-colors duration-700"></div>
-        <div id="parallax-orb" class="absolute left-1/2 top-[18%] h-64 w-64 -translate-x-1/2 rounded-full blur-3xl opacity-40"></div>
+        <div id="parallax-orb" class="absolute left-1/2 top-[18%] h-64 w-64 -translate-x-1/2 rounded-full blur-3xl"></div>
     </div>
 
-    {{-- Header --}}
-    <header class="sticky top-0 z-50 border-b border-line/60 bg-surface/80 backdrop-blur-xl">
-        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-            <a href="#hero" class="group flex items-center gap-3" data-magnetic>
-                <span class="relative flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-elevated shadow-sm transition-transform duration-300 group-hover:scale-105">
-                    <svg class="h-6 w-6 text-accent" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                        <path d="M8 32V8l12 8 12-8v24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 16v16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
-                </span>
-                <span class="hidden sm:block">
-                    <span class="block text-sm font-semibold tracking-tight">{{ $profile['name'] }}</span>
-                    <span class="block text-xs text-muted">Portfolio</span>
-                </span>
+    {{-- Header — pill nav (gaya Stevent Andrean) --}}
+    <header class="top-nav" aria-label="Navigasi utama">
+        <div class="nav-shell">
+            <a href="#hero" class="nav-brand" data-magnetic aria-label="{{ $profile['name'] }}">
+                <img
+                    src="{{ asset('images/brand/logo-steventandrean-light.png') }}"
+                    alt="{{ $profile['name'] }}"
+                    class="logo-theme-light hidden dark:block"
+                    width="120"
+                    height="32"
+                >
+                <img
+                    src="{{ asset('images/brand/logo-steventandrean-dark.png') }}"
+                    alt="{{ $profile['name'] }}"
+                    class="logo-theme-dark dark:hidden"
+                    width="120"
+                    height="32"
+                >
             </a>
 
-            <nav class="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
+            <nav class="nav-links" aria-label="Menu">
+                <a href="#roles" class="nav-link">Work</a>
                 @foreach($roleKeys as $key)
-                    <a href="#role-{{ $roles[$key]['slug'] }}" class="nav-role-link transition-colors hover:text-accent" data-role-nav="{{ $key }}">
+                    <a href="#role-{{ $roles[$key]['slug'] }}" class="nav-link nav-role-link" data-role-nav="{{ $key }}">
                         {{ $roles[$key]['title'] }}
                     </a>
                 @endforeach
-                <a href="#contact" class="transition-colors hover:text-accent">Kontak</a>
+                <a href="#contact" class="nav-link">About</a>
             </nav>
 
-            <div class="flex items-center gap-2">
-                <button type="button" id="theme-toggle" class="btn-ghost rounded-full px-3 py-2 text-xs font-medium" aria-label="Toggle light/dark">
-                    <span class="dark:hidden">Gelap</span>
-                    <span class="hidden dark:inline">Terang</span>
+            <div class="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+                <button type="button" id="theme-toggle" class="nav-theme" aria-label="Toggle light/dark">
+                    <span class="dark:hidden">◐</span>
+                    <span class="hidden dark:inline">◑</span>
                 </button>
+                <a
+                    href="{{ $profile['whatsapp'] ?? 'mailto:'.$profile['email'] }}"
+                    class="nav-cta"
+                    data-magnetic
+                    @if(!empty($profile['whatsapp'])) target="_blank" rel="noopener" @endif
+                >
+                    {{ $profile['cta_nav'] ?? "Let's Talk" }}
+                </a>
             </div>
         </div>
     </header>
@@ -65,7 +78,14 @@
 
             <div class="reveal mt-10 flex flex-wrap gap-3">
                 <a href="#roles" class="btn-primary" data-magnetic>Jelajahi peran</a>
-                <a href="#contact" class="btn-ghost" data-magnetic>Hubungi saya</a>
+                <a
+                    href="{{ $profile['whatsapp'] ?? 'mailto:'.$profile['email'] }}"
+                    class="book-me-btn"
+                    data-magnetic
+                    @if(!empty($profile['whatsapp'])) target="_blank" rel="noopener" @endif
+                >
+                    {{ $profile['cta_hero'] ?? "Let's Make Something Cool" }}
+                </a>
             </div>
         </section>
 

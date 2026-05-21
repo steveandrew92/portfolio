@@ -17,39 +17,44 @@
     --color-accent: var(--sa-accent);
 }
 
-/* Role accents — overridden by JS */
 :root {
     --sa-surface: #f8fafc;
     --sa-elevated: #ffffff;
     --sa-ink: #0f172a;
     --sa-muted: #64748b;
     --sa-line: #e2e8f0;
-    --sa-accent: #0891b2;
-    --sa-accent-soft: rgba(8, 145, 178, 0.1);
+    --sa-accent: #6b8f9e;
+    --sa-accent-soft: rgba(107, 143, 158, 0.08);
+    --sa-cta: #c4a882;
+    --sa-cta-text: #1a1510;
     --sa-navy: #0a192f;
+    --sa-glow-opacity: 0.12;
 }
 
+html.dark,
 html[data-theme='dark'] {
     --sa-surface: #0a192f;
     --sa-elevated: #112240;
     --sa-ink: #e6f1ff;
     --sa-muted: #8892b0;
     --sa-line: #233554;
+    --sa-cta: #d8c2a1;
+    --sa-cta-text: #0a0806;
 }
 
 html[data-role='system_analyst'] {
-    --sa-accent: #22d3ee;
-    --sa-accent-soft: rgba(34, 211, 238, 0.12);
+    --sa-accent: #6b8f9e;
+    --sa-accent-soft: rgba(107, 143, 158, 0.08);
 }
 
 html[data-role='software_developer'] {
-    --sa-accent: #34d399;
-    --sa-accent-soft: rgba(52, 211, 153, 0.12);
+    --sa-accent: #6d9a82;
+    --sa-accent-soft: rgba(109, 154, 130, 0.08);
 }
 
 html[data-role='design_editor'] {
-    --sa-accent: #a78bfa;
-    --sa-accent-soft: rgba(167, 139, 250, 0.12);
+    --sa-accent: #8a7e9e;
+    --sa-accent-soft: rgba(138, 126, 158, 0.08);
 }
 
 #bg-grid {
@@ -65,6 +70,7 @@ html[data-role='design_editor'] {
 #parallax-orb,
 .role-card-glow {
     background-color: var(--sa-accent);
+    opacity: var(--sa-glow-opacity);
 }
 
 .text-accent {
@@ -76,19 +82,85 @@ html[data-role='design_editor'] {
 }
 
 .border-accent {
-    border-color: var(--sa-accent);
+    border-color: color-mix(in srgb, var(--sa-accent) 45%, transparent);
+}
+
+/* Header — pill nav (Stevent Andrean style) */
+.top-nav {
+    @apply sticky top-0 z-50 flex w-full justify-center px-4 py-4 sm:px-6;
+}
+
+.nav-shell {
+    @apply flex w-full max-w-[980px] min-w-0 items-center gap-2 rounded-full border border-line/80 px-3 py-2 sm:gap-3 sm:px-4;
+    background: color-mix(in srgb, var(--sa-elevated) 72%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+.nav-brand {
+    @apply flex shrink-0 items-center no-underline;
+}
+
+.nav-brand img {
+    @apply h-7 w-auto sm:h-8;
+}
+
+.nav-links {
+    @apply hidden min-w-0 flex-1 items-center justify-center gap-4 md:flex lg:gap-6;
+}
+
+.nav-link {
+    @apply text-[0.68rem] font-medium uppercase tracking-[0.14em] text-muted no-underline transition-colors duration-300 whitespace-nowrap;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+    color: var(--sa-ink);
+}
+
+.nav-cta {
+    @apply shrink-0 rounded-full border px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.12em] no-underline transition-transform duration-300 whitespace-nowrap sm:px-4;
+    color: var(--sa-cta-text);
+    background: var(--sa-cta);
+    border-color: color-mix(in srgb, var(--sa-cta) 85%, white);
+}
+
+.nav-cta:hover {
+    transform: scale(1.02);
+}
+
+.nav-theme {
+    @apply shrink-0 rounded-full border border-line/80 bg-elevated/40 px-2.5 py-1.5 text-[0.65rem] font-medium text-muted transition-colors hover:text-ink;
 }
 
 .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-[#0a192f] shadow-sm transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98];
-}
-
-html[data-theme='light'] .btn-primary {
-    @apply text-white;
+    @apply inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+    color: var(--sa-cta-text);
+    background: var(--sa-cta);
+    border-color: color-mix(in srgb, var(--sa-cta) 80%, transparent);
 }
 
 .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-full border border-line bg-elevated/50 px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-accent/40 hover:text-accent;
+    @apply inline-flex items-center justify-center rounded-full border border-line bg-elevated/50 px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-accent/30;
+}
+
+.btn-ghost:hover {
+    color: var(--sa-accent);
+}
+
+.book-me-btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border px-6 py-3 text-sm font-semibold tracking-wide no-underline transition-all duration-500;
+    color: var(--sa-cta-text);
+    background: linear-gradient(135deg, var(--sa-cta) 0%, color-mix(in srgb, var(--sa-cta) 75%, #fff) 100%);
+    border-color: color-mix(in srgb, var(--sa-cta) 70%, transparent);
+}
+
+.book-me-btn::after {
+    content: '→';
+    @apply transition-transform duration-300;
+}
+
+.book-me-btn:hover::after {
+    transform: translateX(3px);
 }
 
 .role-panel.is-open {
@@ -108,11 +180,12 @@ html[data-theme='light'] .btn-primary {
 }
 
 .role-card.is-active {
-    @apply border-accent/50 shadow-lg;
+    border-color: color-mix(in srgb, var(--sa-accent) 35%, var(--sa-line));
+    @apply shadow-md;
 }
 
 .role-card.is-active .role-card-glow {
-    opacity: 0.45;
+    opacity: 0.2;
 }
 
 @media (prefers-reduced-motion: reduce) {

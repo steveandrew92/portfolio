@@ -16,17 +16,26 @@ function readThemeRoles() {
 }
 
 function setActiveRole(roleKey) {
+    const themes = readThemeRoles();
+    const roleTheme = themes[roleKey];
+
     document.documentElement.dataset.role = roleKey;
     const app = document.getElementById('portfolio-app');
     if (app) app.dataset.activeRole = roleKey;
+
+    if (roleTheme?.accent) {
+        document.documentElement.style.setProperty('--sa-accent', roleTheme.accent);
+    }
+    if (roleTheme?.accent_soft) {
+        document.documentElement.style.setProperty('--sa-accent-soft', roleTheme.accent_soft);
+    }
 
     document.querySelectorAll('[data-role-card]').forEach((card) => {
         card.classList.toggle('is-active', card.dataset.roleCard === roleKey);
     });
 
     document.querySelectorAll('[data-role-nav]').forEach((link) => {
-        link.classList.toggle('text-accent', link.dataset.roleNav === roleKey);
-        link.classList.toggle('font-semibold', link.dataset.roleNav === roleKey);
+        link.classList.toggle('is-active', link.dataset.roleNav === roleKey);
     });
 }
 
@@ -34,14 +43,19 @@ function initThemeToggle() {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
 
+    const applyTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+    };
+
     const stored = localStorage.getItem('sa-theme');
     if (stored === 'light' || stored === 'dark') {
-        document.documentElement.dataset.theme = stored;
+        applyTheme(stored);
     }
 
     btn.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
+        applyTheme(next);
         localStorage.setItem('sa-theme', next);
     });
 }

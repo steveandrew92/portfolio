@@ -5,6 +5,9 @@
     "tagline": "Membangun sistem yang terstruktur, kode yang performan, dan pengalaman visual yang elegan.",
     "email": "stevent.andrean@gmail.com",
     "location": "Indonesia",
+    "cta_nav": "Let's Talk",
+    "cta_hero": "Let's Make Something Cool",
+    "whatsapp": "https://wa.me/6281299960700",
     "social": {
       "linkedin": "https://www.linkedin.com/in/steventandrean",
       "github": "https://github.com/steventandrean",
@@ -14,18 +17,18 @@
   "theme": {
     "roles": {
       "system_analyst": {
-        "accent": "#22d3ee",
-        "accent_soft": "rgba(34, 211, 238, 0.12)",
+        "accent": "#6b8f9e",
+        "accent_soft": "rgba(107, 143, 158, 0.08)",
         "label": "System Analyst"
       },
       "software_developer": {
-        "accent": "#34d399",
-        "accent_soft": "rgba(52, 211, 153, 0.12)",
+        "accent": "#6d9a82",
+        "accent_soft": "rgba(109, 154, 130, 0.08)",
         "label": "Software Developer"
       },
       "design_editor": {
-        "accent": "#a78bfa",
-        "accent_soft": "rgba(167, 139, 250, 0.12)",
+        "accent": "#8a7e9e",
+        "accent_soft": "rgba(138, 126, 158, 0.08)",
         "label": "Design Editor"
       }
     }
